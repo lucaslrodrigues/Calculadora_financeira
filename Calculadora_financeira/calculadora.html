@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora Financeira</title>
+    <link rel="stylesheet" href="estilo_calc.css">
+</head>
+<body>
+    <div id="topo">
+        <img src="Logo_Fleming.png" alt="Logo_Fleming" id="logo">
+    </div>
+    <div id="corpo">
+        <div id="conteudo">
+            <h1>Calculadora financeira</h1>
+
+            <!-- Botões para inserir valores -->
+            <div id="inputs">
+                Quantidade de capsulas produzidas <br><input id="qtd_capsula" autofocus placeholder='"Quantidade"'><br>
+                valor de custo unitário <br><input id="valor_capsula" placeholder='"Valor"'><br>
+                valor de venda unitário <br><input id="venda_valor" placeholder="Preço de venda">
+            </div>
+            <button onclick="calculate()" id="botao">Calcular valor perdido</button><br>
+            <div id="exibir"></div>
+        </div>
+    </div>
+</body>
+</html>
+<script>
+    function calculate(){
+        var quantidade = Number(qtd_capsula.value) * 0.60; // 60% do valor (40% perdido perdido)
+        var valor = Number(valor_capsula.value); // Preço de custo
+        var venda_preco = Number(venda_valor.value); // Preço de venda
+        var lucro = venda_preco - valor // Descobrindo qual é o lucro com base no valor de venda unitário
+
+        var qtd_c_perda = (venda_preco * quantidade) * 0.85
+        var tot_s_lucro = valor * quantidade
+        var qtd_c_lucro = venda_preco * quantidade
+        var qtd_dinheiro_c_perda = qtd_c_perda * venda_preco
+        var qtd_perdida = quantidade * 0.15; // Quantidade perdida por umidade
+        var qtd_dinheiro =  valor * qtd_perdida;
+        var lucro_perdido = lucro * qtd_perdida
+        
+        //Script retornando os valores
+        if (quantidade > 0){
+        exibir.innerHTML = `<h3>Perda de comprimidos (15% da produção)</h3><p><b>Perda em quantide por umidade</b> : ${(qtd_perdida).toFixed(0)} unidades de capsulas<br><b>Perda monetária</b>: R$${(qtd_dinheiro).toFixed(2)}
+        <br><b>Lucro perdido: ${lucro_perdido}</b></p>
+
+        <p>Valor faturado com monitoramento fleming: <b>R$${(qtd_c_lucro).toFixed(2)}</b><br>Valor faturado sem monitoramento fleming: <b>R$${(qtd_c_perda).toFixed(2)}</b>.</p>
+
+        <i>Estes valores representam 15% da produção, está é a quantidade média perdidade durante a produção por exesso de umidade no ambiente.
+        Durante este processo a umidade do ar no ambiente deve ser mantida em 60%.<br>Com nosso sistema de monitoramento via sensor de umidade, você pode reduzir sua perda significativamente.</i>
+        `
+        }else{
+            alert('Insira um valor válido no campo "Quantidade"')
+        }
+    }
+</script>

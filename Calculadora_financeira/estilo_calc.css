@@ -1,0 +1,38 @@
+body{
+    background-color: rgb(217, 235, 255);
+}
+#topo{
+    background-color: rgb(28, 117, 165);
+    height: 70px;
+    margin-top: -10px;
+    margin-left: -10px;
+    margin-right: -10px;
+}
+#corpo{
+    background-color: rgb(28, 117, 165);
+    color: white;
+    height:max-content;
+    width: 500px;
+    /* margin-top: 50px; */
+    /* border-radius: 10px; */
+}
+#conteudo{
+    margin-top: 10px;
+    margin-left: 10px;
+}
+#botao{
+    background-color: rgb(74, 255, 237);
+    color: rgb(16, 76, 154);
+    /* margin-top: 10px; */
+}
+#logo{
+    width: 50px;
+    margin-top: 10px;
+    margin-left: 10px;
+}
+#qtd_capsula, #valor_capsula, #botao{
+    margin-bottom: 10px;
+}
+#logo{
+    width: 150px;
+}
